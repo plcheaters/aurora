@@ -119,16 +119,17 @@
 
   <div id="toast" class="toast">Redirecting...</div>
 
-  <audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_5e263dea4d.mp3"></audio>
+  <!-- MoistCritical YEAAA BABY sound -->
+  <audio id="moistSound" src="https://cdn.discordapp.com/attachments/1052780891300184096/1122831322310264380/yeaababy.mp3"></audio>
 
   <script>
     function redirectTo(name, url) {
       const toast = document.getElementById('toast');
-      const clickSound = document.getElementById('clickSound');
+      const moistSound = document.getElementById('moistSound');
 
-      if (clickSound) {
-        clickSound.currentTime = 0;
-        clickSound.play();
+      if (moistSound) {
+        moistSound.currentTime = 0;
+        moistSound.play();
       }
 
       toast.textContent = `✔️ Redirecting to ${name}...`;
