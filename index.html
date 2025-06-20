@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aurora Sites</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #00cfff, #6a0dad);
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .main-content {
+      width: 60%;
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      padding: 15px 30px;
+      margin: 10px;
+      border: 2px solid white;
+      border-radius: 12px;
+      font-size: 1.2em;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: white;
+      color: #6a0dad;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.9em;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .discord-panel {
+      width: 40%;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: -5px 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .discord-panel img.banner {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .discord-panel iframe {
+      border-radius: 10px;
+      border: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      body {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .main-content, .discord-panel {
+        width: 90%;
+      }
+
+      .discord-panel {
+        margin-top: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-content">
+    <h1>Aurora Sites</h1>
+    <div>
+      <a href="#" class="button" onclick="redirectTo('Aurora Main', 'https://app.genn.lu/auth/craetor')">Aurora Main</a>
+      <a href="#" class="button" onclick="redirectTo('Imortal (Best links)', 'https://robloxmorg.com/dashboard/?code=MjY0MTA3NDEwNjU1MzI2OTg0MF85NDQyMTI4MTQxMDk0NDczMTQ3')">Imortal (Best links)</a>
+      <a href="#" class="button" onclick="redirectTo('Autohar', 'https://bloxtools.st/generator/craetor')">Autohar</a>
+    </div>
+  </div>
+
+  <div class="discord-panel">
+    <img class="banner" src="https://cdn.discordapp.com/attachments/1385674372299362304/1385683942186815529/image.png?ex=6856f63c&is=6855a4bc&hm=a1346852e931401339fa8ec97c71c3a2ce68cb3c699bd165b9c5ee0d13974bfc&" alt="Discord Banner" />
+    <iframe src="https://discord.com/widget?id=1385671279071461478&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+  </div>
+
+  <div id="toast" class="toast">Redirecting...</div>
+
+  <audio id="clickSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_5e263dea4d.mp3"></audio>
+
+  <script>
+    function redirectTo(name, url) {
+      const toast = document.getElementById('toast');
+      const clickSound = document.getElementById('clickSound');
+
+      if (clickSound) {
+        clickSound.currentTime = 0;
+        clickSound.play();
+      }
+
+      toast.textContent = `✔️ Redirecting to ${name}...`;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+        window.location.href = url;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
