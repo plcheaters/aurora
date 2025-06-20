@@ -100,9 +100,9 @@
   <div class="main-content">
     <h1>Aurora Sites</h1>
     <div>
-      <a href="#" class="button" onclick="redirectTo('Aurora Main', 'https://app.genn.lu/auth/craetor')">Aurora Main</a>
-      <a href="#" class="button" onclick="redirectTo('Imortal (Best links)', 'https://robloxmorg.com/dashboard/?code=MjY0MTA3NDEwNjU1MzI2OTg0MF85NDQyMTI4MTQxMDk0NDczMTQ3')">Imortal (Best links)</a>
-      <a href="#" class="button" onclick="redirectTo('Autohar', 'https://bloxtools.st/generator/craetor')">Autohar</a>
+      <button class="button" onclick="handleClick('Aurora Main', 'https://app.genn.lu/auth/craetor')">Aurora Main</button>
+      <button class="button" onclick="handleClick('Imortal (Best links)', 'https://robloxmorg.com/dashboard/?code=MjY0MTA3NDEwNjU1MzI2OTg0MF85NDQyMTI4MTQxMDk0NDczMTQ3')">Imortal (Best links)</button>
+      <button class="button" onclick="handleClick('Autohar', 'https://bloxtools.st/generator/craetor')">Autohar</button>
     </div>
   </div>
 
@@ -112,30 +112,30 @@
 
   <div id="toast" class="toast">Redirecting...</div>
 
-  <!-- MoistCr1TiKaL YEAAAH BABY sound -->
-  <audio id="moistSound" src="https://cdn.discordapp.com/attachments/1385674372299362304/1385691599094415360/moistcr1tikal-woooh-yeah-baby-meme-360p.mp3?ex=6856fd5e&is=6855abde&hm=7a599ac53a00a03571ea04f5b9ef04f21f826ef799ed8056e2547c1d6ec88167&"></audio>
+  <audio id="moistSound" preload="auto">
+    <source src="https://cdn.discordapp.com/attachments/1385674372299362304/1385691599094415360/moistcr1tikal-woooh-yeah-baby-meme-360p.mp3?ex=6856fd5e&is=6855abde&hm=7a599ac53a00a03571ea04f5b9ef04f21f826ef799ed8056e2547c1d6ec88167&" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
 
   <script>
-    function redirectTo(name, url) {
+    function handleClick(name, url) {
       const toast = document.getElementById('toast');
       const moistSound = document.getElementById('moistSound');
 
-      try {
+      if (moistSound) {
         moistSound.currentTime = 0;
         moistSound.play().catch(err => {
           console.warn("Audio play blocked:", err);
         });
-      } catch (e) {
-        console.error("Audio error:", e);
       }
 
-      toast.textContent = `✔️ Redirecting to ${name}...`;
+      toast.textContent = `✔️ Opening ${name}...`;
       toast.classList.add('show');
 
       setTimeout(() => {
         toast.classList.remove('show');
-        window.location.href = url;
-      }, 1000);
+        window.open(url, '_blank'); // open in new tab
+      }, 700);
     }
   </script>
 </body>
