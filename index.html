@@ -19,13 +19,10 @@
       padding: 80px 40px;
       text-align: center;
     }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 30px;
-    }
+    h1 { font-size: 3em; margin-bottom: 30px; }
     .button {
       display: inline-block;
-      background-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.1);
       color: white;
       padding: 15px 30px;
       margin: 10px;
@@ -37,14 +34,14 @@
       cursor: pointer;
     }
     .button:hover {
-      background-color: white;
+      background: white;
       color: #6a0dad;
     }
     .toast {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0,0,0,0.8);
       color: white;
       padding: 12px 20px;
       border-radius: 10px;
@@ -53,17 +50,15 @@
       transition: opacity 0.5s;
       z-index: 999;
     }
-    .toast.show {
-      opacity: 1;
-    }
+    .toast.show { opacity: 1; }
     .discord-panel {
       width: 40%;
       padding: 20px;
-      background-color: rgba(0, 0, 0, 0.4);
+      background: rgba(0,0,0,0.4);
       display: flex;
       flex-direction: column;
       align-items: center;
-      box-shadow: -5px 0 10px rgba(0, 0, 0, 0.3);
+      box-shadow: -5px 0 10px rgba(0,0,0,0.3);
     }
     .discord-panel img.banner {
       max-width: 100%;
@@ -77,17 +72,10 @@
       max-width: 350px;
       height: 500px;
     }
-    @media screen and (max-width: 768px) {
-      body {
-        flex-direction: column;
-        align-items: center;
-      }
-      .main-content, .discord-panel {
-        width: 90%;
-      }
-      .discord-panel {
-        margin-top: 30px;
-      }
+    @media (max-width: 768px) {
+      body { flex-direction: column; align-items: center; }
+      .main-content, .discord-panel { width: 90%; }
+      .discord-panel { margin-top: 30px; }
     }
   </style>
 </head>
@@ -102,26 +90,32 @@
   </div>
 
   <div class="discord-panel">
-    <iframe src="https://discord.com/widget?id=1385671279071461478&theme=dark" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+    <img class="banner"
+         src="https://cdn.discordapp.com/attachments/1385674372299362304/1385683942186815529/image.png"
+         alt="Discord Banner">
+    <iframe src="https://discord.com/widget?id=1385671279071461478&theme=dark"
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+    </iframe>
   </div>
 
   <div id="toast" class="toast"></div>
 
-  <audio id="moistSound" preload="auto" src="https://cdn.discordapp.com/attachments/1385674372299362304/1385691599094415360/moistcr1tikal-woooh-yeah-baby-meme-360p.mp3?ex=6856fd5e&is=6855abde&hm=7a599ac53a00a03571ea04f5b9ef04f21f826ef799ed8056e2547c1d6ec88167&"></audio>
+  <audio id="moistSound" preload="auto">
+    <source src="https://cdn.discordapp.com/attachments/1385674372299362304/1385691599094415360/moistcr1tikal-woooh-yeah-baby-meme-360p.mp3"
+            type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
   <script>
     function handleClick(name, url) {
       const toast = document.getElementById('toast');
-      const moistSound = document.getElementById('moistSound');
-
-      if (moistSound) {
-        moistSound.currentTime = 0;
-        moistSound.play().catch(e => console.warn('Audio blocked:', e));
+      const sound = document.getElementById('moistSound');
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play().catch(e => console.warn('Audio blocked:', e));
       }
-
       toast.textContent = `✔️ Opening ${name}...`;
       toast.classList.add('show');
-
       setTimeout(() => {
         toast.classList.remove('show');
         window.open(url, '_blank');
