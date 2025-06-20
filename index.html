@@ -78,12 +78,6 @@
     .discord-panel img.banner {
       max-width: 100%;
       border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .discord-panel iframe {
-      border-radius: 10px;
-      border: none;
     }
 
     @media screen and (max-width: 768px) {
@@ -113,12 +107,12 @@
   </div>
 
   <div class="discord-panel">
-    <iframe src="https://discord.com/widget?id=1385671279071461478&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+    <img class="banner" src="https://cdn.discordapp.com/attachments/1385674372299362304/1385683942186815529/image.png?ex=6856f63c&is=6855a4bc&hm=a1346852e931401339fa8ec97c71c3a2ce68cb3c699bd165b9c5ee0d13974bfc&" alt="Discord Banner" />
   </div>
 
   <div id="toast" class="toast">Redirecting...</div>
 
-  <!-- MoistCritical YEAAA BABY sound -->
+  <!-- MoistCr1TiKaL YEAAAH BABY sound -->
   <audio id="moistSound" src="https://cdn.discordapp.com/attachments/1385674372299362304/1385691599094415360/moistcr1tikal-woooh-yeah-baby-meme-360p.mp3?ex=6856fd5e&is=6855abde&hm=7a599ac53a00a03571ea04f5b9ef04f21f826ef799ed8056e2547c1d6ec88167&"></audio>
 
   <script>
@@ -126,9 +120,13 @@
       const toast = document.getElementById('toast');
       const moistSound = document.getElementById('moistSound');
 
-      if (moistSound) {
+      try {
         moistSound.currentTime = 0;
-        moistSound.play();
+        moistSound.play().catch(err => {
+          console.warn("Audio play blocked:", err);
+        });
+      } catch (e) {
+        console.error("Audio error:", e);
       }
 
       toast.textContent = `✔️ Redirecting to ${name}...`;
